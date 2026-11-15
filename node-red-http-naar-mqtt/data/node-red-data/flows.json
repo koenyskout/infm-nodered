@@ -1,0 +1,190 @@
+[
+    {
+        "id": "fc1e473da047ef42",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b8fbc29afec5501f",
+        "type": "mqtt-broker",
+        "name": "mqtt",
+        "broker": "mqtt-broker",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "949e4831eb4e7a52",
+        "type": "http in",
+        "z": "fc1e473da047ef42",
+        "name": "",
+        "url": "/devices/:id",
+        "method": "post",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 100,
+        "wires": [
+            [
+                "145753ecadfeb291"
+            ]
+        ]
+    },
+    {
+        "id": "145753ecadfeb291",
+        "type": "switch",
+        "z": "fc1e473da047ef42",
+        "name": "valid id?",
+        "property": "req.params.id",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 360,
+        "y": 100,
+        "wires": [
+            [
+                "5071705b9fc3bd9f"
+            ],
+            [
+                "ba02ea51494cb771"
+            ]
+        ]
+    },
+    {
+        "id": "ba02ea51494cb771",
+        "type": "http response",
+        "z": "fc1e473da047ef42",
+        "name": "Respond 400 Invalid",
+        "statusCode": "400",
+        "headers": {},
+        "x": 580,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "5071705b9fc3bd9f",
+        "type": "change",
+        "z": "fc1e473da047ef42",
+        "name": "Set temperature in payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t    \"temperature\": payload\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 60,
+        "wires": [
+            [
+                "d537a370e535af08",
+                "3449c9a9863d58ef"
+            ]
+        ]
+    },
+    {
+        "id": "d537a370e535af08",
+        "type": "http response",
+        "z": "fc1e473da047ef42",
+        "name": "Respond 200 OK",
+        "statusCode": "200",
+        "headers": {},
+        "x": 870,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "3449c9a9863d58ef",
+        "type": "change",
+        "z": "fc1e473da047ef42",
+        "name": "Prepare MQTT message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "\"/tsensor/\" & req.params.id",
+                "tot": "jsonata"
+            },
+            {
+                "t": "delete",
+                "p": "req",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 80,
+        "wires": [
+            [
+                "25a5e0a59f3787b2"
+            ]
+        ]
+    },
+    {
+        "id": "25a5e0a59f3787b2",
+        "type": "mqtt out",
+        "z": "fc1e473da047ef42",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "b8fbc29afec5501f",
+        "x": 1090,
+        "y": 80,
+        "wires": []
+    }
+]

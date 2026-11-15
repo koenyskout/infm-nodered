@@ -1,0 +1,8 @@
+data/mosquitto-data
+data/mosquitto-logs
+*.pyc
+venv/
+__pycache__/
+node_modules/
+lib/
+.npm

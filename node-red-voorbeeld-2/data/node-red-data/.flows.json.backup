@@ -1,0 +1,550 @@
+[
+    {
+        "id": "f15b878785ba6383",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "823d58a7be360955",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://plc-sim:4840/OPCUA",
+        "secpol": "None",
+        "secmode": "None",
+        "none": true,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    },
+    {
+        "id": "d123a378e8507f74",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "f7b83c3e6c5e87cb",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "b8429d44d60402d9",
+        "type": "ui-page",
+        "name": "Page 1",
+        "ui": "d123a378e8507f74",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "f7b83c3e6c5e87cb",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": 0,
+                "cols": 3
+            },
+            {
+                "name": "Tablet",
+                "px": 576,
+                "cols": 6
+            },
+            {
+                "name": "Small Desktop",
+                "px": 768,
+                "cols": 9
+            },
+            {
+                "name": "Desktop",
+                "px": 1024,
+                "cols": 12
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "bd876b5bfad561d2",
+        "type": "ui-group",
+        "name": "Group 1",
+        "page": "b8429d44d60402d9",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": true,
+        "disabled": false,
+        "groupType": "default"
+    },
+    {
+        "id": "caf7b37ffc15a8ab",
+        "type": "OpcUa-Item",
+        "z": "f15b878785ba6383",
+        "item": "ns=2;i=2",
+        "datatype": "Double",
+        "value": "",
+        "name": "Current Temperature",
+        "x": 320,
+        "y": 360,
+        "wires": [
+            [
+                "4976afe72f72cd97"
+            ]
+        ]
+    },
+    {
+        "id": "4976afe72f72cd97",
+        "type": "OpcUa-Client",
+        "z": "f15b878785ba6383",
+        "endpoint": "823d58a7be360955",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "OPC-UA Read",
+        "applicationName": "",
+        "applicationUri": "",
+        "x": 540,
+        "y": 400,
+        "wires": [
+            [
+                "ae179f37ccd72857"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "8570c952c8f04ae0",
+        "type": "inject",
+        "z": "f15b878785ba6383",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 400,
+        "wires": [
+            [
+                "caf7b37ffc15a8ab",
+                "569b1f59bf28d1f8",
+                "2789424ca881e87e"
+            ]
+        ]
+    },
+    {
+        "id": "569b1f59bf28d1f8",
+        "type": "OpcUa-Item",
+        "z": "f15b878785ba6383",
+        "item": "ns=2;i=3",
+        "datatype": "Double",
+        "value": "",
+        "name": "Current Power",
+        "x": 300,
+        "y": 400,
+        "wires": [
+            [
+                "4976afe72f72cd97"
+            ]
+        ]
+    },
+    {
+        "id": "84f991fb023b7d18",
+        "type": "ui-chart",
+        "z": "f15b878785ba6383",
+        "group": "bd876b5bfad561d2",
+        "name": "",
+        "label": "Temperature",
+        "order": 2,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "0",
+        "ymax": "40",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 1170,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ae179f37ccd72857",
+        "type": "switch",
+        "z": "f15b878785ba6383",
+        "name": "switch on topic",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ns=2;i=3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "ns=2;i=2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "ns=2;i=4",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 740,
+        "y": 380,
+        "wires": [
+            [
+                "137ae140dbba41b6"
+            ],
+            [
+                "0a6f1bf1fc51e54b"
+            ],
+            [
+                "21e73c6f9413ea81",
+                "05bb614b0873aab6"
+            ]
+        ]
+    },
+    {
+        "id": "137ae140dbba41b6",
+        "type": "ui-gauge",
+        "z": "f15b878785ba6383",
+        "name": "",
+        "group": "bd876b5bfad561d2",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Heater",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "%",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "50",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "80",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 910,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2789424ca881e87e",
+        "type": "OpcUa-Item",
+        "z": "f15b878785ba6383",
+        "item": "ns=2;i=4",
+        "datatype": "Double",
+        "value": "",
+        "name": "Current Setpoint",
+        "x": 300,
+        "y": 440,
+        "wires": [
+            [
+                "4976afe72f72cd97"
+            ]
+        ]
+    },
+    {
+        "id": "da9f483e79eee1c5",
+        "type": "ui-slider",
+        "z": "f15b878785ba6383",
+        "group": "bd876b5bfad561d2",
+        "name": "",
+        "label": "Setpoint",
+        "tooltip": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "thumbLabel": "true",
+        "showTicks": "always",
+        "min": 0,
+        "max": "50",
+        "step": 1,
+        "className": "",
+        "iconPrepend": "",
+        "iconAppend": "",
+        "color": "",
+        "colorTrack": "",
+        "colorThumb": "",
+        "showTextField": true,
+        "x": 200,
+        "y": 560,
+        "wires": [
+            [
+                "d9f84bb461bc42d0"
+            ]
+        ]
+    },
+    {
+        "id": "e9b1993061cc9aa8",
+        "type": "OpcUa-Client",
+        "z": "f15b878785ba6383",
+        "endpoint": "823d58a7be360955",
+        "action": "write",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "useTransport": false,
+        "maxChunkCount": 1,
+        "maxMessageSize": 8192,
+        "receiveBufferSize": 8192,
+        "sendBufferSize": 8192,
+        "setstatusandtime": false,
+        "keepsessionalive": false,
+        "name": "OPC-UA Write",
+        "applicationName": "",
+        "applicationUri": "",
+        "x": 640,
+        "y": 560,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "d9f84bb461bc42d0",
+        "type": "OpcUa-Item",
+        "z": "f15b878785ba6383",
+        "item": "ns=2;i=4",
+        "datatype": "Double",
+        "value": "",
+        "name": "Current Setpoint",
+        "x": 420,
+        "y": 560,
+        "wires": [
+            [
+                "e9b1993061cc9aa8"
+            ]
+        ]
+    },
+    {
+        "id": "0a6f1bf1fc51e54b",
+        "type": "change",
+        "z": "f15b878785ba6383",
+        "name": "Rename to temperature",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Temperature",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 380,
+        "wires": [
+            [
+                "84f991fb023b7d18"
+            ]
+        ]
+    },
+    {
+        "id": "21e73c6f9413ea81",
+        "type": "change",
+        "z": "f15b878785ba6383",
+        "name": "Rename to setpoint",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Setpoint",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 420,
+        "wires": [
+            [
+                "84f991fb023b7d18"
+            ]
+        ]
+    },
+    {
+        "id": "05bb614b0873aab6",
+        "type": "link out",
+        "z": "f15b878785ba6383",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "edf9a89d0d73da31"
+        ],
+        "x": 875,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "edf9a89d0d73da31",
+        "type": "link in",
+        "z": "f15b878785ba6383",
+        "name": "link in 1",
+        "links": [
+            "05bb614b0873aab6"
+        ],
+        "x": 95,
+        "y": 560,
+        "wires": [
+            [
+                "da9f483e79eee1c5"
+            ]
+        ]
+    }
+]

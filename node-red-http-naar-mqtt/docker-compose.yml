@@ -1,0 +1,46 @@
+services:
+
+  temp-sensor:
+    # Demo temperature sensor that sends data to Node-RED
+    build: ./temperature-sensor
+    depends_on:
+      - node-red
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./temperature-sensor
+          target: /app
+          initial_sync: true
+
+  mqtt-client:
+    # Demo MQTT client that subscribes to data and prints it
+    build: ./mqtt-listener
+    depends_on:
+      - mqtt-broker
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./mqtt-listener
+          target: /app
+          initial_sync: true
+
+  mqtt-broker:
+    # MQTT broker
+    image: eclipse-mosquitto:latest
+    ports:
+      - "1883:1883" # MQTT (default)
+      - "8083:8083" # MQTT over WebSockets
+    volumes:
+      - ./data/mosquitto-data:/mosquitto/data
+      - ./data/mosquitto-logs:/mosquitto/logs
+      - ./data/mosquitto-config:/mosquitto/config
+
+  node-red:
+    # Node-RED instance (http://localhost:1880)
+    image: nodered/node-red:latest
+    depends_on:
+      - mqtt-broker
+    ports:
+      - "1880:1880"
+    volumes:
+      - ./data/node-red-data:/data
