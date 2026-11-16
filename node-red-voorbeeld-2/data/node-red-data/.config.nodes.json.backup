@@ -427,308 +427,110 @@
             }
         }
     },
-    "@flowfuse/node-red-dashboard": {
-        "name": "@flowfuse/node-red-dashboard",
-        "version": "1.36.1",
+    "node-red-contrib-opcua": {
+        "name": "node-red-contrib-opcua",
+        "version": "0.2.355",
         "local": true,
         "user": true,
         "nodes": {
-            "ui-base": {
-                "name": "ui-base",
+            "OpcUa-Item": {
+                "name": "OpcUa-Item",
                 "types": [
-                    "ui-base"
+                    "OpcUa-Item"
                 ],
                 "enabled": true,
                 "local": true,
                 "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/config/ui_base.js"
+                "module": "node-red-contrib-opcua",
+                "file": "/data/node_modules/node-red-contrib-opcua/opcua/101-opcuaitem.js"
             },
-            "ui-page": {
-                "name": "ui-page",
+            "OpcUa-Client": {
+                "name": "OpcUa-Client",
                 "types": [
-                    "ui-page"
+                    "OpcUa-Client"
                 ],
                 "enabled": true,
                 "local": true,
                 "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/config/ui_page.js"
+                "module": "node-red-contrib-opcua",
+                "file": "/data/node_modules/node-red-contrib-opcua/opcua/102-opcuaclient.js"
             },
-            "ui-link": {
-                "name": "ui-link",
+            "OpcUa-Browser": {
+                "name": "OpcUa-Browser",
                 "types": [
-                    "ui-link"
+                    "OpcUa-Browser"
                 ],
                 "enabled": true,
                 "local": true,
                 "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/config/ui_link.js"
+                "module": "node-red-contrib-opcua",
+                "file": "/data/node_modules/node-red-contrib-opcua/opcua/103-opcuabrowser.js"
             },
-            "ui-group": {
-                "name": "ui-group",
+            "OpcUa-Server": {
+                "name": "OpcUa-Server",
                 "types": [
-                    "ui-group"
+                    "OpcUa-Server"
                 ],
                 "enabled": true,
                 "local": true,
                 "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/config/ui_group.js"
+                "module": "node-red-contrib-opcua",
+                "file": "/data/node_modules/node-red-contrib-opcua/opcua/104-opcuaserver.js"
             },
-            "ui-theme": {
-                "name": "ui-theme",
+            "OpcUa-Endpoint": {
+                "name": "OpcUa-Endpoint",
                 "types": [
-                    "ui-theme"
+                    "OpcUa-Endpoint"
                 ],
                 "enabled": true,
                 "local": true,
                 "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/config/ui_theme.js"
+                "module": "node-red-contrib-opcua",
+                "file": "/data/node_modules/node-red-contrib-opcua/opcua/105-opcuaendpoint.js"
             },
-            "ui-form": {
-                "name": "ui-form",
+            "OpcUa-Event": {
+                "name": "OpcUa-Event",
                 "types": [
-                    "ui-form"
+                    "OpcUa-Event"
                 ],
                 "enabled": true,
                 "local": true,
                 "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_form.js"
+                "module": "node-red-contrib-opcua",
+                "file": "/data/node_modules/node-red-contrib-opcua/opcua/106-opcuaevent.js"
             },
-            "ui-text-input": {
-                "name": "ui-text-input",
+            "OpcUa-Method": {
+                "name": "OpcUa-Method",
                 "types": [
-                    "ui-text-input"
+                    "OpcUa-Method"
                 ],
                 "enabled": true,
                 "local": true,
                 "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_text_input.js"
+                "module": "node-red-contrib-opcua",
+                "file": "/data/node_modules/node-red-contrib-opcua/opcua/107-opcuamethod.js"
             },
-            "ui-number-input": {
-                "name": "ui-number-input",
+            "OpcUa-Rights": {
+                "name": "OpcUa-Rights",
                 "types": [
-                    "ui-number-input"
+                    "OpcUa-Rights"
                 ],
                 "enabled": true,
                 "local": true,
                 "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_number_input.js"
+                "module": "node-red-contrib-opcua",
+                "file": "/data/node_modules/node-red-contrib-opcua/opcua/108-opcuarights.js"
             },
-            "ui-file-input": {
-                "name": "ui-file-input",
+            "OpcUa-Discovery": {
+                "name": "OpcUa-Discovery",
                 "types": [
-                    "ui-file-input"
+                    "OpcUa-Discovery"
                 ],
                 "enabled": true,
                 "local": true,
                 "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_file_input.js"
-            },
-            "ui-button": {
-                "name": "ui-button",
-                "types": [
-                    "ui-button"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_button.js"
-            },
-            "ui-button-group": {
-                "name": "ui-button-group",
-                "types": [
-                    "ui-button-group"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_button_group.js"
-            },
-            "ui-dropdown": {
-                "name": "ui-dropdown",
-                "types": [
-                    "ui-dropdown"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_dropdown.js"
-            },
-            "ui-radio-group": {
-                "name": "ui-radio-group",
-                "types": [
-                    "ui-radio-group"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_radio_group.js"
-            },
-            "ui-slider": {
-                "name": "ui-slider",
-                "types": [
-                    "ui-slider"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_slider.js"
-            },
-            "ui-spacer": {
-                "name": "ui-spacer",
-                "types": [
-                    "ui-spacer"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_spacer.js"
-            },
-            "ui-switch": {
-                "name": "ui-switch",
-                "types": [
-                    "ui-switch"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_switch.js"
-            },
-            "ui-text": {
-                "name": "ui-text",
-                "types": [
-                    "ui-text"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_text.js"
-            },
-            "ui-table": {
-                "name": "ui-table",
-                "types": [
-                    "ui-table"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_table.js"
-            },
-            "ui-chart": {
-                "name": "ui-chart",
-                "types": [
-                    "ui-chart"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_chart.js"
-            },
-            "ui-gauge": {
-                "name": "ui-gauge",
-                "types": [
-                    "ui-gauge"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_gauge.js"
-            },
-            "ui-notification": {
-                "name": "ui-notification",
-                "types": [
-                    "ui-notification"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_notification.js"
-            },
-            "ui-audio": {
-                "name": "ui-audio",
-                "types": [
-                    "ui-audio"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_audio.js"
-            },
-            "ui-markdown": {
-                "name": "ui-markdown",
-                "types": [
-                    "ui-markdown"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_markdown.js"
-            },
-            "ui-template": {
-                "name": "ui-template",
-                "types": [
-                    "ui-template"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_template.js"
-            },
-            "ui-event": {
-                "name": "ui-event",
-                "types": [
-                    "ui-event"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_event.js"
-            },
-            "ui-control": {
-                "name": "ui-control",
-                "types": [
-                    "ui-control"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_control.js"
-            },
-            "ui-progress": {
-                "name": "ui-progress",
-                "types": [
-                    "ui-progress"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "@flowfuse/node-red-dashboard",
-                "file": "/data/node_modules/@flowfuse/node-red-dashboard/nodes/widgets/ui_progress.js"
+                "module": "node-red-contrib-opcua",
+                "file": "/data/node_modules/node-red-contrib-opcua/opcua/109-opcuadiscovery.js"
             }
         }
     }
